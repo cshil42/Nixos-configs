@@ -125,6 +125,7 @@
     extraGroups = [ "networkmanager" "wheel" "docker" "openrazer" ];
     shell = pkgs.fish;
     packages = with pkgs; [
+      gh
       r2modman
       nvtopPackages.full
       firefox
