@@ -253,6 +253,17 @@
 
   # List services that you want to enable:
 
+  # mDNS: resolve *.local hosts (e.g. Magenta.local) and advertise <hostname>.local
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+    publish = {
+      enable = true;
+      addresses = true;
+    };
+  };
+
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
   # networking.firewall.allowedTCPPorts = [22];
