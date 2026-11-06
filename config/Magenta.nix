@@ -8,7 +8,11 @@
   networking.hostName = "Magenta";
 
   # shared.nix sets amdgpu kernel params for other machines — this one has Intel GPU only
-  boot.kernelParams = lib.mkForce [ "kvm.enable_virt_at_load=0" ];
+  # nvme_core: disable APST deep sleep; the ADATA IM2P32A8 NVMe stalled on writes (2026-11-06)
+  boot.kernelParams = lib.mkForce [
+    "kvm.enable_virt_at_load=0"
+    "nvme_core.default_ps_max_latency_us=0"
+  ];
 
   # No AMD GPU on this machine — disable LACT daemon and Razer support
   systemd.services.lact.enable = lib.mkForce false;
