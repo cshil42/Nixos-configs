@@ -125,7 +125,7 @@
     extraGroups = [ "networkmanager" "wheel" "docker" "openrazer" ];
     shell = pkgs.fish;
     packages = with pkgs; [
-      anki
+      anki-bin # anki 26.09.4 fails to build from source (2026-11-10)
       gh
       r2modman
       nvtopPackages.full
@@ -259,9 +259,9 @@
     enable = true;
     nssmdns4 = true;
     openFirewall = true;
-    publish = {
-      enable = true;
-      addresses = true;
+    settings.publish = {
+      disable-publishing = false;
+      publish-addresses = true;
     };
   };
 
